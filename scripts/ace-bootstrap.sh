@@ -56,8 +56,8 @@ ace_update_git () {
     find ${ROOTDIR}/ace/environments -name '*.yaml' -print0 |
     while IFS= read -r -d '' File; do
         echo "Processing $File"
-        sed -i'.bak' -e "s#https://github.com/cloud-native-toolkit-demos/multi-tenancy-gitops-apps.git#${GIT_BASEURL}/${GIT_ORG}/${GIT_GITOPS_APPLICATIONS}#" $File
-        sed -i'.bak' -e "s#https://github.com/cloud-native-toolkit-demos/ace-customer-details.git#${GIT_BASEURL}/${GIT_ORG}/${GIT_ACE_APP}#" $File
+        sed -i'.bak' -e "s#https://github.com/Telstra-mq-hub/multi-tenancy-gitops-apps.git#${GIT_BASEURL}/${GIT_ORG}/${GIT_GITOPS_APPLICATIONS}#" $File
+        sed -i'.bak' -e "s#https://github.com/Telstra-mq-hub/ace-customer-details.git#${GIT_BASEURL}/${GIT_ORG}/${GIT_ACE_APP}#" $File
         rm "${File}.bak"
     done
 
@@ -65,7 +65,7 @@ ace_update_git () {
         find ${ROOTDIR}/ace/config/argocd -name '*.yaml' -print0 |
         while IFS= read -r -d '' File; do
             echo "Processing $File"
-            sed -i'.bak' -e "s#https://github.com/cloud-native-toolkit-demos/multi-tenancy-gitops-apps.git#${GIT_BASEURL}/${GIT_ORG}/${GIT_GITOPS_APPLICATIONS}#" $File
+            sed -i'.bak' -e "s#https://github.com/Telstra-mq-hub/multi-tenancy-gitops-apps.git#${GIT_BASEURL}/${GIT_ORG}/${GIT_GITOPS_APPLICATIONS}#" $File
             sed -i'.bak' -e "s#targetRevision: master#targetRevision: ${GIT_GITOPS_APPLICATIONS_BRANCH}#" $File
             rm "${File}.bak"
         done
